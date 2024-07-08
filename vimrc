@@ -56,6 +56,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'udalov/kotlin-vim'
 Plug 'jlcrochet/vim-razor'
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 "colorscheme
@@ -65,6 +66,7 @@ highlight Normal ctermbg=none
 
 
 lua require('telescope').setup ({defaults = {file_ignore_patterns = {"node_modules",".git","dist","build","venv","__pycache__","bin"},file_sorter =require('telescope.sorters').get_fzy_sorter}})
+lua require('gitsigns').setup()
 
 let g:limelight_conceal_ctermfg=238
 let g:limelight_default_coefficient = 0.8
@@ -94,9 +96,11 @@ map <F2> :Limelight!!<CR>
 
 "leader key remaps
 let mapleader = " "
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>gg :Gitsigns blame_line<CR>
 nnoremap <leader>pp :lua require('telescope.builtin').find_files()<CR>
-
+nnoremap <leader>ps :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+nnoremap <leader>pg :lua require('telescope.builtin').live_grep()<CR>
+nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
 "navigate windows
 nnoremap <leader>s :wincmd l<CR>
 nnoremap <leader>h :wincmd h<CR>

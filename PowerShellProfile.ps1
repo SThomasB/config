@@ -5,15 +5,15 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-
 Del alias:h
 
 Set-Alias -Name pyt -Value PythonMath
-Set-Alias -Name eprof -Value EditProfile 
+Set-Alias -Name eprof -Value EditProfile
 
 
-function d {cd C:\devil}
 
 Set-Alias -Name cd -Option AllScope -Value Push-Location
 Set-Alias -Name n -Value Pop-Backstack
 set-Alias -Name t -Value Push-Backstack
 Set-Alias -Name cob -Value SelectGitBranch
+
 function hh
 {
     abra recall
@@ -27,7 +27,7 @@ function blog
 
 function SelectGitBranch
 {
-    python C:\\devil\__Tools\selectbranch.py
+    python C:\Users\thsvendsen\Environment\selectbranch.py
 }
 
 function Pop-Backstack
@@ -35,7 +35,7 @@ function Pop-Backstack
     if ($GLOBAL:backStack.Count -lt 1)
     {
         return
-    
+
     }
     Push-Location ($GLOBAL:backStack.Pop())
 }
